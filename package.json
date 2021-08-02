@@ -1,0 +1,22 @@
+{
+  "name": "Full Stack Blockchain Project",
+  "version": "1.0.0",
+  "description": "Full Stack Application with Blockchain and Crypto Currency",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aroseca15/Full-Stack_Blockchain_Project.git"
+  },
+  "author": "Amanda MacDonald",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aroseca15/Full-Stack_Blockchain_Project/issues"
+  },
+  "homepage": "https://github.com/aroseca15/Full-Stack_Blockchain_Project#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
