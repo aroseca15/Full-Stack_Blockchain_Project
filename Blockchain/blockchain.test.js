@@ -20,9 +20,16 @@ describe('Blockchain', () => {
 
     describe('isValidChain()', () => {
         describe('when the chain does NOT start with the genesis block', () => {
-            it('returns False', () => {
+            it('returns False', () => { });
+        });
 
-            })
+        describe('when the chain starts with the genesis block and has multiple blocks', () => {
+            describe('a last hash reference has been changed', () => {
+                it('returns False', () => { });
+            });
+            describe('the chain contains a block with an invalid field', () => {
+                it('returns False', () => { });
+            });
         });
     });
 });
