@@ -15,6 +15,14 @@ describe('Blockchain', () => {
     it('adds new block to the chain', () => {
         const newData = 'for ever';
         blockchain.addBlock({ data: newData });
-        expect(blockchain.chain[blockchain.chain.length-1].data).toEqual(newData);
+        expect(blockchain.chain[blockchain.chain.length - 1].data).toEqual(newData);
+    });
+
+    describe('isValidChain()', () => {
+        describe('when the chain does NOT start with the genesis block', () => {
+            it('returns False', () => {
+
+            })
+        });
     });
 });
