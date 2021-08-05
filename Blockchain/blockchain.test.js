@@ -2,11 +2,13 @@ const Blockchain = require('./Blockchain');
 const Block = require('../Block/Block');
 
 describe('Blockchain', () => {
-    let blockchain, newChain;
+    let blockchain, newChain, originalChain;
+
 
     beforeEach(() => {
         blockchain = new Blockchain();
         newChain = new Blockchain();
+        originalChain = blockchain.chain
     });
 
     it('contains a `chain` Array instance', () => {
@@ -64,7 +66,11 @@ describe('Blockchain', () => {
     });
     describe('replaceChain()', () => {
         describe('when the new chain is not longer', () => {
-            it('does not get replaced', () => { });
+            it('does not get replaced', () => {
+                newChain.chain[0] = { new: 'chain' };
+                blockchain.replaceChain(newChain.chain);
+                expect(blockchain.chain).toEqual(originalChain);
+             });
         });
 
         describe('when the chain is longer', () => {
@@ -72,7 +78,7 @@ describe('Blockchain', () => {
                 it('does not get replaced', () => { })
             });
             describe('and the chain is valid', () => {
-                it('gets replaced', () => { })
+                it('replaces the chain', () => { })
             });
         });
     });
