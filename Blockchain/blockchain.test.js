@@ -70,15 +70,29 @@ describe('Blockchain', () => {
                 newChain.chain[0] = { new: 'chain' };
                 blockchain.replaceChain(newChain.chain);
                 expect(blockchain.chain).toEqual(originalChain);
-             });
+            });
         });
 
-        describe('when the chain is longer', () => {
+        describe('when the new chain is longer', () => {
+            beforeEach(() => {
+                newChain.addBlock({ data: 'Red Wine' });
+                newChain.addBlock({ data: 'Hard Cider' });
+                newChain.addBlock({ data: 'Tequila' });
+            });
             describe('and the chain is invalid', () => {
-                it('does not get replaced', () => { })
+                it('does not get replaced', () => {
+                    newChain.chain[2].hash = 'Beer-Hash';
+                    blockchain.replaceChain(newChain.chain);
+
+                    expect(blockchain.chain).toEqual(originalChain);
+                });
             });
             describe('and the chain is valid', () => {
-                it('replaces the chain', () => { })
+                it('replaces the chain', () => {
+                    blockchain.replaceChain(newChain.chain);
+
+                    expect(blockchain.chain).toEqual(newChain.chain);
+                });
             });
         });
     });
