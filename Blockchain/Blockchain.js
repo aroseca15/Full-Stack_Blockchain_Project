@@ -10,8 +10,22 @@ class Blockchain {
             lastBlock: this.chain[this.chain.length - 1],
             data
         });
- 
+
         this.chain.push(newBlock);
+    }
+
+    replaceChain(chain) {
+        if (chain.length <= this.chain.length) {
+            console.error('Incoming chain must be longer.');
+            return;
+        }
+
+        if (!Blockchain.isValidChain(chain)) {
+            console.error('Incoming chain must be valid');
+            return;
+        }
+        this.chain = chain;
+        console.log('Chain was successfully replaced with:', chain);
     }
 
     static isValidChain(chain) {
@@ -29,10 +43,6 @@ class Blockchain {
 
             if (hash !== validatedHash) return false;
         }
-
-
-
-
         return true;
     }
 }
