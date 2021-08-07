@@ -65,11 +65,28 @@ describe('Blockchain', () => {
         });
     });
     describe('replaceChain()', () => {
+        let errorMock, logMock;
+
+        beforeEach(() => {
+            errorMock = jest.fn();
+            logMock = jest.fn();
+
+            global.console.error = errorMock;
+            global.console.log = logMock;
+        });
+
         describe('when the new chain is not longer', () => {
-            it('does not get replaced', () => {
+            beforeEach(() => {
                 newChain.chain[0] = { new: 'chain' };
                 blockchain.replaceChain(newChain.chain);
+            });
+            it('does not get replaced', () => {
+
                 expect(blockchain.chain).toEqual(originalChain);
+            });
+
+            it('logs and error', () => {
+                expect(errorMock).toHaveBeenCalled();
             });
         });
 
@@ -80,18 +97,27 @@ describe('Blockchain', () => {
                 newChain.addBlock({ data: 'Tequila' });
             });
             describe('and the chain is invalid', () => {
-                it('does not get replaced', () => {
+                beforeEach(() => {
                     newChain.chain[2].hash = 'Beer-Hash';
                     blockchain.replaceChain(newChain.chain);
-
+                });
+                it('does not get replaced', () => {
                     expect(blockchain.chain).toEqual(originalChain);
+                });
+
+                it('logs and error', () => {
+                    expect(errorMock).toHaveBeenCalled();
                 });
             });
             describe('and the chain is valid', () => {
-                it('replaces the chain', () => {
+                beforeEach(() => {
                     blockchain.replaceChain(newChain.chain);
-
+                });
+                it('replaces the chain', () => {
                     expect(blockchain.chain).toEqual(newChain.chain);
+                });
+                it('logs about chain replacement', () => {
+                    expect(logMock).toHaveBeenCalled();
                 });
             });
         });
