@@ -1,4 +1,4 @@
-const Blockchain = require('./Blockchain');
+const Blockchain = require('./Blockchain/Blockchain');
 
 const blockchain = new Blockchain();
 
@@ -20,5 +20,5 @@ for (let i = 0; i < 10000; i++) {
 
     average = times.reduce((total, num) => (total + num)) / times.length;
 
-    console.log(`Time taken to mine this block: ${timeDiff}. Average time used to mine block: ${average}ms. Difficulty is: ${nextBlock.difficulty}.`);
+    console.log(`Time taken to mine this block: ${timeDiff}ms. Average time used to mine block: ${average}ms. Difficulty is: ${nextBlock.difficulty}.`);
 }
