@@ -5,7 +5,7 @@ const { mineBlock } = require('./Block');
 const Block = require('./Block');
 
 describe('Block', () => {
-    const timestamp = 'Today';
+    const timestamp = 2000;
     const lastHash = 'prevHash';
     const data = 'I miss Jimmy';
     const hash = 'currHash';
