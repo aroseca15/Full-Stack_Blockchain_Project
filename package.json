@@ -18,5 +18,8 @@
   "homepage": "https://github.com/aroseca15/Full-Stack_Blockchain_Project#readme",
   "devDependencies": {
     "jest": "^27.0.6"
+  },
+  "dependencies": {
+    "hex-to-binary": "^1.0.1"
   }
 }
